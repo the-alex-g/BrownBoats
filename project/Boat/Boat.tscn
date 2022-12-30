@@ -25,6 +25,7 @@ offset = Vector2( 0, -16 )
 
 [node name="LoadTimer" type="Timer" parent="."]
 wait_time = 0.5
+autostart = true
 
 [node name="PortLimit1" type="Position2D" parent="."]
 position = Vector2( 5, -9 )

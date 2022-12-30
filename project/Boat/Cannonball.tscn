@@ -6,6 +6,7 @@
 radius = 2.0
 
 [node name="Cannonball" type="KinematicBody2D"]
+collision_layer = 2
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
