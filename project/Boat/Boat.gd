@@ -7,7 +7,7 @@ export var max_speed := 60.0
 export var turn_speed := 0.01
 export var accel_factor := 0.01
 export var deaccel_factor := 0.01
-export var damage := 5
+export var damage := 8
 
 var id := 0
 var _turn_inertia := 0.0
@@ -76,4 +76,8 @@ func _on_LoadTimer_timeout()->void:
 
 
 func damage(amount:int)->void:
-	BoatStats.hull[id] -= amount
+	for i in amount:
+		if randi() % 4 == 0:
+			BoatStats.sails[id] -= 1
+		else:
+			BoatStats.hull[id] -= 1

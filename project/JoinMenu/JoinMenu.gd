@@ -7,8 +7,8 @@ const BOAT_COLORS := [
 	Color.saddlebrown,
 ]
 
-var boats_joined := []
-var boat_color_indicies := []
+var boats_joined := [-1, -1, -1, -1]
+var boat_color_indicies := [-1, -1, -1, -1]
 
 
 func _input(event:InputEvent)->void:
@@ -40,6 +40,7 @@ func _add_boat(id:int)->void:
 
 func _start()->void:
 	for i in boats_joined:
-		BoatStats.add_boat(i, BOAT_COLORS[boat_color_indicies[i]])
+		if i != -1:
+			BoatStats.add_boat(i, BOAT_COLORS[boat_color_indicies[i]])
 	# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://Main/World.tscn")

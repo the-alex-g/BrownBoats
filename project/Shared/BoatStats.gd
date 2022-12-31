@@ -5,7 +5,7 @@ var colors := [Color.white, Color.white, Color.white, Color.white]
 var cannons := [4, 4, 4, 4]
 var cannons_loaded := [0, 0, 0, 0]
 var hull := [100, 100, 100, 100]
-var sails := [50, 100, 100, 100]
+var sails := [100, 100, 100, 100]
 
 
 func add_boat(id:int, color:Color)->void:

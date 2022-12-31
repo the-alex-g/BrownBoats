@@ -7,13 +7,10 @@ onready var _hull_bar : ProgressBar = $VBoxContainer/HullBar
 onready var _sail_bar : ProgressBar = $VBoxContainer/SailBar
 
 
-func _ready()->void:
-	self_modulate = BoatStats.colors[id]
-	_cannon_bar.max_value = BoatStats.cannons[id]
-
-
 func _set_id(value:int)->void:
 	id = value
+	self_modulate = BoatStats.colors[id]
+	_cannon_bar.max_value = BoatStats.cannons[id]
 	show()
 
 
