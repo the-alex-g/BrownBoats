@@ -17,7 +17,7 @@ onready var _load_timer : Timer = $LoadTimer
 
 
 func _ready()->void:
-	$Sprite.self_modulate = BoatStats.colors[id]
+	$Hull.self_modulate = BoatStats.colors[id]
 
 
 func _physics_process(delta:float)->void:
