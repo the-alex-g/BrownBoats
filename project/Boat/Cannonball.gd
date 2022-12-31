@@ -1,10 +1,11 @@
 extends KinematicBody2D
 
 export var speed := 80.0
-export var lifetime := 1.0
+export var lifetime := 1.5
 export var lifetime_variance := 0.2
 
 var direction := 0.0
+var damage := 0
 
 
 func _ready()->void:
@@ -15,6 +16,8 @@ func _physics_process(delta:float)->void:
 	var collision := move_and_collide(Vector2.RIGHT.rotated(direction) * speed * delta)
 	if collision:
 		queue_free()
+		if collision.collider.has_method("damage"):
+			collision.collider.damage(damage)
 
 
 func _draw()->void:

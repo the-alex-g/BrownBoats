@@ -6,6 +6,7 @@ export var speed := 45
 export var turn_speed := 0.01
 export var accel_factor := 0.01
 export var deaccel_factor := 0.01
+export var damage := 5
 
 var id := 0
 var _turn_inertia := 0.0
@@ -44,11 +45,13 @@ func _shoot()->void:
 		var cannonball := Cannonball.instance()
 		cannonball.position = lerp($PortLimit1.global_position, $PortLimit2.global_position, float(i) / (BoatStats.cannons[id] - 1))
 		cannonball.direction = rotation - PI / 2
+		cannonball.damage = damage
 		get_parent().add_child(cannonball)
 		
 		# fire starboard side cannon
 		cannonball = Cannonball.instance()
 		cannonball.position = lerp($StarboardLimit1.global_position, $StarboardLimit2.global_position, float(i) / (BoatStats.cannons[id] - 1))
+		cannonball.damage = damage
 		cannonball.direction = rotation + PI / 2
 		get_parent().add_child(cannonball)
 		
@@ -61,3 +64,7 @@ func _on_LoadTimer_timeout()->void:
 		BoatStats.cannons_loaded[id] += 1
 	else:
 		_load_timer.stop()
+
+
+func damage(amount:int)->void:
+	BoatStats.hull[id] -= amount
